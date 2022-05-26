@@ -1,0 +1,23 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "_LayoutTest";
+    string message = "welcome to use MVC";
+}
+
+<div style="color:powderblue">这是我的第一个页面，，</div>
+<div>@System.DateTime.Now.ToLongDateString()</div>
+<div>are you sure?</div>
+<div>@message</div>
+@for(int i = 0; i < 10; i++)
+            {
+                <p>@i</p>
+            }
+
+@section Scripts
+{
+    <script>
+        alert("hello");
+    </script>
+}

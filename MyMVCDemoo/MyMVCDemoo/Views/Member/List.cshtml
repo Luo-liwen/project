@@ -1,0 +1,56 @@
+﻿@model IEnumerable<MyMVCDemoo.Models.EF.T002好友表>
+
+@{
+    ViewData["Title"] = "List";
+}
+
+<a asp-action="Create" class="btn btn-primary" >添加好友信息</a>
+<p>
+   <font size="8">
+        @Context.User.FindFirst(System.Security.Claims.ClaimTypes.Name)?.Value
+   </font>
+</p>
+<p>
+    角色:
+    @foreach (var claims in Context.User.Claims.Where(c => c.Type == System.Security.Claims.ClaimTypes.Role))
+    {
+        <span> @claims.Value </span>
+    }
+</p>
+
+
+
+@{
+    await Html.RenderPartialAsync("Search", new MyMVCDemoo.Models.ViewModels.Member.SearchModel());
+    //引用部件页
+}
+<table class="table">
+    <tr>
+        <th>
+            name
+        </th>
+        <th>
+            phone
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+            
+                <a asp-action="Detail" asp-route-id="@item.Id">@item.姓名</a>
+            </td>
+            <td>
+                @item.电话
+            </td>
+        </tr>
+    }
+
+</table>
+@if (!Model.Any())
+{
+    <h3>没有数据</h3>
+}
+
+
+

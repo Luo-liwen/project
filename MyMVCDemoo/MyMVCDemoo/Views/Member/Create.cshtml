@@ -1,0 +1,38 @@
+﻿@model MyMVCDemoo.Models.ViewModels.Member.AddressCreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>新建通信记录</h1>
+
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="姓名" class="control-label"></label>
+                <input asp-for="姓名" class="form-control" />
+                <span asp-validation-for="姓名" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="电话" class="control-label"></label>
+                <input asp-for="电话" class="form-control" />
+                <span asp-validation-for="电话" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="确定" class="btn btn-primary myconfirm" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">返回</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
